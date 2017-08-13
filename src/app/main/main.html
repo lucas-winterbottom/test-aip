@@ -5,13 +5,33 @@
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Post a Message</div>
+    <div class="panel-heading">Post a Recommendation</div>
     <div class="input-group">
-      <textarea class="form-control custom-control" rows="3" style="resize:none">
+      <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.sender" placeholder="User">
       </textarea>
-      <span class="input-group-addon btn btn-primary"
-      ng-click="main.postMessage()">Post</span>
+      <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.message" placeholder="Message">
+      </textarea>
+      <span class="input-group-addon btn btn-primary" ng-click="main.postMessage()">Post</span>
     </div>
+  </div>
+
+
+  <div ng-controller="MainController">
+      <h4>Default</h4>
+      <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+</div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Recommendations</div>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="message in main.messages">
+        <b>User:</b>
+        <br> {{message.usr}}
+        <br>
+        <b>Message Text:</b>
+        <br> {{message.msg}}
+      </li>
+    </ul>
   </div>
 
 </div>

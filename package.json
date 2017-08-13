@@ -1,7 +1,12 @@
 {
   "name": "myapp2",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "@angular/cdk": "^2.0.0-beta.8",
+    "@angular/core": "^4.3.4",
+    "@angular/material": "^2.0.0-beta.8",
+    "angular-material": "^1.1.4"
+  },
   "scripts": {
     "test": "gulp test"
   },
