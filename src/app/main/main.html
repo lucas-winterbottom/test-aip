@@ -7,29 +7,40 @@
   <div class="panel panel-default">
     <div class="panel-heading">Post a Recommendation</div>
     <div class="input-group">
-      <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.sender" placeholder="User">
-      </textarea>
-      <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.message" placeholder="Message">
+      <input type="name" class="form-control custom-control" required minlength="4" ng-model="main.title" placeholder="Enter Movie Title">
+      </input>
+      <input type="date" class="form-control custom-control" ng-model="main.release"></input>
+      <input type="number" max="300" class="form-control custom-control" ng-model="main.duration" placeholder="Enter Movie Duration"></input>
+
+      <input list="genres" class="form-control custom-control" ng-model="main.genre" placeholder="Select a Genre">
+      <datalist id="genres">
+         <option value="Horror">
+         <option value="Drama">
+         <option value="Action">
+         <option value="Romance">
+         <option value="Comedy">
+       </datalist>
+
+      <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.message" placeholder="Write Synopsis">
       </textarea>
       <span class="input-group-addon btn btn-primary" ng-click="main.postMessage()">Post</span>
     </div>
   </div>
 
 
-  <div ng-controller="MainController">
-      <h4>Default</h4>
-      <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
-</div>
-
   <div class="panel panel-default">
     <div class="panel-heading">Recommendations</div>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="message in main.messages">
-        <b>User:</b>
-        <br> {{message.usr}}
+        <b>Title:</b><br> {{message.title}}
         <br>
-        <b>Message Text:</b>
-        <br> {{message.msg}}
+        <b>Release Date:</b> <br> {{message.release}}
+        <br>
+        <b>Duration:</b> <br> {{message.duration}}
+        <br>
+        <b>Genre:</b> <br> {{message.genre}}
+        <br>
+        <b>Synopsis:</b> <br> {{message.syn}}
       </li>
     </ul>
   </div>

@@ -14,11 +14,14 @@ export class MainController {
 
   postMessage() {
     this.$http.post('http://localhost:5000/api/message', {
-      usr: this.sender,
-      msg: this.message
+      title: this.title,
+      release: this.release,
+      duration: this.duration,
+      genre: this.genre,
+      syn: this.message
     });
     location.reload();
   }
 
-  
+
 }
