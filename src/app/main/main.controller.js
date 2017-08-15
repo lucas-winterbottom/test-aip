@@ -20,8 +20,6 @@ export class MainController {
       genre: this.genre,
       syn: this.message
     });
-    location.reload();
+    this.getMessages();
   }
-
-
 }
