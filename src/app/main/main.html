@@ -28,7 +28,7 @@
 
         <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.message" placeholder="Write Synopsis">
       </textarea>
-        <span name="button" class="input-group-addon btn btn-primary" ng-click="main.postMessage()" ng-disabled="Recomendation.$valid">Post</span>
+        <span name="button" class="input-group-addon btn btn-primary" ng-click="main.postMessage()" ng-show="Recomendation.$valid">Post</span>
       </div>
     </div>
   </form>
