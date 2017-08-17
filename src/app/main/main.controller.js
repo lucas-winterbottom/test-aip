@@ -7,13 +7,13 @@ export class MainController {
 
   getMessages() {
     var vm = this;
-    this.$http.get('http://localhost:5000/api/message').then(function(result) {
+    this.$http.get('http://127.0.0.1:3000/api/message').then(function(result) {
       vm.messages = result.data;
     });
   }
 
   postMessage() {
-    this.$http.post('http://localhost:5000/api/message', {
+    this.$http.post('http://127.0.0.1:3000/api/message', {
       title: this.title,
       release: this.release,
       duration: this.duration,

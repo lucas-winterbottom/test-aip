@@ -4,6 +4,19 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
 
+var express = require('express');
+var app = express.createServer();
+var bodyParser = require('body-parser')
+var mongoose = require('mongoose');
+
+var Message = mongoose.model('Message', {
+  title: String,
+  release: Date,
+  duration: Number,
+  genre: String,
+  syn: String
+});
+
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 
@@ -61,3 +74,39 @@ gulp.task('serve:e2e', ['inject'], function () {
 gulp.task('serve:e2e-dist', ['build'], function () {
   browserSyncInit(conf.paths.dist, []);
 });
+
+
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+})
+
+app.get('/api/message', GetMessages);
+
+app.post('/api/message', function(req, res) {
+  console.log(req.body);
+  var message = new Message(req.body);
+  // message.collection.drop();
+  message.save();
+
+  res.status(200);
+})
+
+mongoose.connect("mongodb://localhost:27017/test", function(err, db) {
+  if (!err) {
+    console.log(("we are connected to mongo"));
+  }
+})
+
+var server = app.listen(3000, function() {
+  console.log('listening on port', server.address().port);
+})
+
+function GetMessages(req, res) {
+  Message.find({}).exec(function(err, result) {
+    res.send(result);
+  })
+}
