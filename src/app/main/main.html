@@ -3,51 +3,79 @@
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
+
   <form name="Recomendation">
     <div class="panel panel-default">
-      <div class="panel-heading">Post a Recommendation</div>
+      <div class="panel-heading">Post a Shift Covering Request</div>
       <div class="input-group">
-        <input type="name" name="title" class="form-control custom-control" required minlength="4" ng-model="main.title" placeholder="Enter Movie Title">
+
+        <input type="name" name="name" class="form-control custom-control" required minlength="4" ng-model="main.name" placeholder="Employee name">
         </input>
-        <div class="alert alert-warning" role="alert" ng-show="Recomendation.title.$touched && Recomendation.title.$invalid">
+
+        <div class="alert alert-warning" role="alert" ng-show="Recomendation.name.$touched && Recomendation.name.$invalid">
           <strong>Warning!</strong> The title is required and has to be longer than 4 characters.
         </div>
-        <input type="date" class="form-control custom-control" ng-model="main.release" required></input>
-        <input type="number" name="duration" max="300" class="form-control custom-control" ng-model="main.duration" placeholder="Enter Movie Duration" required></input>
-        <div class="alert alert-warning" role="alert" ng-show="Recomendation.duration.$touched && Recomendation.duration.$invalid">
-          <strong>Warning!</strong> The title is required and has to be less then 300.
+
+        <input type="name" name="name2" class="form-control custom-control" required minlength="4" ng-model="main.name2" placeholder="Covering employee">
+        </input>
+
+        <div class="alert alert-warning" role="alert" ng-show="Recomendation.name2.$touched && Recomendation.name2.$invalid">
+          <strong>Warning!</strong> The requested employee is required and has to be longer than 4 characters.
         </div>
-        <select class="form-control" ng-model="main.genre" required>
-        <option>Horror </option>
-        <option>Action</option>
-        <option>Thriller</option>
-        <option>Romance</option>
-        <option>Comedy</option>
-      </select>
 
+        <input type="name" name="role" class="form-control custom-control" required minlength="4" ng-model="main.role" placeholder="Shift role">
+        </input>
 
-        <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="main.message" placeholder="Write Synopsis">
-      </textarea>
-        <span name="button" class="input-group-addon btn btn-primary" ng-click="main.postMessage()" ng-show="Recomendation.$valid">Post</span>
+        <div class="alert alert-warning" role="alert" ng-show="Recomendation.role.$touched && Recomendation.role.$invalid">
+          <strong>Warning!</strong> The role is required and has to be longer than 4 characters.
+        </div>
+
+        <input type="time" name="time" class="form-control custom-control" ng-model="main.startTime" required></input>
+        <div class="alert alert-warning" role="alert" ng-show="Recomendation.duration.$touched && Recomendation.time.$invalid">
+          <strong>Warning!</strong> The start time is required.
+        </div>
+
+        <input type="date" name="date" class="form-control custom-control" ng-model="main.date" required></input>
+        <div class="alert alert-warning" role="alert" ng-show="Recomendation.duration.$touched && Recomendation.date.$invalid">
+          <strong>Warning!</strong> The date is required.
+        </div>
+
+        <input type="number" name="duration" max="10" min='3' class="form-control custom-control" ng-model="main.duration" placeholder="Enter shift duration (hrs)" required></input>
+        <div class="alert alert-warning" role="alert" ng-show="Recomendation.duration.$touched && Recomendation.duration.$invalid">
+          <strong>Warning!</strong> The duration is required and must be less than 10 and greater than 3.
+        </div>
+
+        <span name="button" class="input-group-addon btn btn-primary" ng-click="main.postMessage()" ng-disabled="!Recomendation.$valid">Post</span>
       </div>
     </div>
   </form>
-  <p>The input's valid state is:</p>
-  <h1>{{Recomendation.$valid}}</h1>
+
+
+  <!-- <center>
+    <p>The input's valid state is:</p>
+    <h1>{{Recomendation.$valid}}</h1>
+  </center> -->
 
   <div class="panel panel-default">
-    <div class="panel-heading">Recommendations</div>
+    <div class="panel-heading">Pending requests</div>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="message in main.messages">
-        <b>Title:</b><br> {{message.title}}
+        <b>Employee:</b> {{message.name}}
         <br>
-        <b>Release Date:</b> <br> {{message.release}}
+        <b>Covering Employee:</b> {{message.name2}}
         <br>
-        <b>Duration:</b> <br> {{message.duration}}
+        <b>Role:</b> {{message.role}}
         <br>
-        <b>Genre:</b> <br> {{message.genre}}
+        <b>Start Time:</b> {{message.startTime}}
         <br>
-        <b>Synopsis:</b> <br> {{message.syn}}
+        <b>Date:</b> {{message.date}}
+        <br>
+        <b>Duration:</b> {{message.duration}}
+        <br>
+        <button id="buttonid" name="buttonid" class="btn btn-success" ng-show="!message.approved">Approve</button>
+        <button id="buttonid" name="buttonid" class="btn btn-warning" ng-show="!message.approved">Edit</button>
+
+        <button id="button2id" name="button2id" class="btn btn-danger" ng-show="!message.approved">Delete</button>
       </li>
     </ul>
   </div>

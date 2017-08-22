@@ -10,11 +10,13 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 
 var Message = mongoose.model('Message', {
-  title: String,
-  release: Date,
+  name: String,
+  name2: String,
+  role: String,
+  startTime: String,
+  date: Date,
   duration: Number,
-  genre: String,
-  syn: String
+  approved: Boolean
 });
 
 var browserSync = require('browser-sync');
@@ -101,7 +103,7 @@ mongoose.connect("mongodb://localhost:27017/test", function(err, db) {
   }
 })
 
-var server = app.listen(3000, function() {
+var server = app.listen(5000, function() {
   console.log('listening on port', server.address().port);
 })
 
