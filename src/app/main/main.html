@@ -72,10 +72,10 @@
         <br>
         <b>Duration:</b> {{message.duration}}
         <br>
-        <button id="buttonid" name="buttonid" class="btn btn-success" ng-show="!message.approved">Approve</button>
+        <button id="buttonsid" name="buttonsid" class="btn btn-success" ng-show="!message.approved">Approve</button>
         <button id="buttonid" name="buttonid" class="btn btn-warning" ng-show="!message.approved">Edit</button>
 
-        <button id="button2id" name="button2id" class="btn btn-danger" ng-show="!message.approved">Delete</button>
+        <button id="button2id" name="button2id" class="btn btn-danger" ng-click="main.deleteMessage(message._id)" ng-show="!message.approved">Delete</button>
       </li>
     </ul>
   </div>
