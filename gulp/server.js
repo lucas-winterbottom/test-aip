@@ -21,9 +21,7 @@ var Message = mongoose.model('Message', {
 
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
-
 var util = require('util');
-
 var proxyMiddleware = require('http-proxy-middleware');
 
 function browserSyncInit(baseDir, browser) {
@@ -40,15 +38,6 @@ function browserSyncInit(baseDir, browser) {
     baseDir: baseDir,
     routes: routes
   };
-
-  /*
-   * You can add a proxy to your backend by uncommenting the line below.
-   * You just have to configure a context which will we redirected and the target url.
-   * Example: $http.get('/users') requests will be automatically proxified.
-   *
-   * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.9.0/README.md
-   */
-  // server.middleware = proxyMiddleware('/users', {target: 'http://jsonplaceholder.typicode.com', changeOrigin: true});
 
   browserSync.instance = browserSync.init({
     startPath: '/',
@@ -77,7 +66,6 @@ gulp.task('serve:e2e-dist', ['build'], function() {
   browserSyncInit(conf.paths.dist, []);
 });
 
-
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
@@ -93,7 +81,6 @@ app.post('/api/message', function(req, res) {
   var message = new Message(req.body);
   // message.collection.drop();
   message.save();
-
   res.status(200);
 })
 
@@ -106,7 +93,6 @@ mongoose.connect("mongodb://localhost:27017/test", function(err, db) {
 app.delete('/api/message/', function(req, res) {
  var id = req.params.id;
  console.log((id));
-
  Message.findOneAndRemove({_id: id}, function(err){});
 })
 
