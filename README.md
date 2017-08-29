@@ -1,4 +1,5 @@
 # test-aip
+Description of project
 
 ## Code style guide
 *	Camel case for variables and methods
