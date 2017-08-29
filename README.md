@@ -13,3 +13,5 @@ Description of project
 *	Leave a line gap between logically unrelated tags
 *	Split lines at the end of the attribute exceeding 75 characters
 *	Place `<br>` beside previous line with a space in between
+* Meaningful variable names
+* Commented where variable names may be vague and may need context
