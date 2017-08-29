@@ -24,9 +24,8 @@ export class MainController {
       startTime: this.startTime,
       date: this.date,
       duration: this.duration, //duration of shift
-      approved: false // whether or not the shift covering has been approved 
+      approved: false // whether or not the shift covering has been approved
     }).then(location.reload());
-
   }
 
   deleteMessage(id) {

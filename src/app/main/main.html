@@ -11,21 +11,18 @@
 
         <input type="name" name="name" class="form-control custom-control" required minlength="4" ng-model="main.name" placeholder="Employee name">
         </input>
-
         <div class="alert alert-warning" role="alert" ng-show="Recomendation.name.$touched && Recomendation.name.$invalid">
           <strong>Warning!</strong> The title is required and has to be longer than 4 characters.
         </div>
 
         <input type="name" name="name2" class="form-control custom-control" required minlength="4" ng-model="main.name2" placeholder="Covering employee">
         </input>
-
         <div class="alert alert-warning" role="alert" ng-show="Recomendation.name2.$touched && Recomendation.name2.$invalid">
           <strong>Warning!</strong> The requested employee is required and has to be longer than 4 characters.
         </div>
 
         <input type="name" name="role" class="form-control custom-control" required minlength="4" ng-model="main.role" placeholder="Shift role">
         </input>
-
         <div class="alert alert-warning" role="alert" ng-show="Recomendation.role.$touched && Recomendation.role.$invalid">
           <strong>Warning!</strong> The role is required and has to be longer than 4 characters.
         </div>
@@ -60,21 +57,15 @@
     <div class="panel-heading">Pending requests</div>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="message in main.messages">
-        <b>Employee:</b> {{message.name}}
-        <br>
-        <b>Covering Employee:</b> {{message.name2}}
-        <br>
-        <b>Role:</b> {{message.role}}
-        <br>
-        <b>Start Time:</b> {{message.startTime}}
-        <br>
-        <b>Date:</b> {{message.date}}
-        <br>
-        <b>Duration:</b> {{message.duration}}
-        <br>
+        <b>Employee:</b> {{message.name}} <br>
+        <b>Covering Employee:</b> {{message.name2}} <br>
+        <b>Role:</b> {{message.role}} <br>
+        <b>Start Time:</b> {{message.startTime | date: "hh:mma"}} <br>
+        <b>Date:</b> {{message.date | date: "dd/MM/yy"}} <br>
+        <b>Duration:</b> {{message.duration}} hours <br>
+
         <button id="buttonsid" name="buttonsid" class="btn btn-success" ng-show="!message.approved">Approve</button>
         <button id="buttonid" name="buttonid" class="btn btn-warning" ng-show="!message.approved">Edit</button>
-
         <button id="button2id" name="button2id" class="btn btn-danger" ng-click="main.deleteMessage(message._id)" ng-show="!message.approved">Delete</button>
       </li>
     </ul>
