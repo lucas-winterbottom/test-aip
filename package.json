@@ -6,7 +6,9 @@
     "@angular/core": "^4.3.4",
     "@angular/material": "^2.0.0-beta.8",
     "angular-material": "^1.1.4",
-    "gulp-serve": "^1.4.0"
+    "gulp-serve": "^1.4.0",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1"
   },
   "scripts": {
     "test": "gulp test"

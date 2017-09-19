@@ -5,7 +5,7 @@ var moment = require('moment');
 module.exports = {
     register: function (req, res) {
         console.log(req.body);
-        
+
         User.findOne({
             email: req.body.email
         }, function (err, existingUser) {
@@ -21,17 +21,17 @@ module.exports = {
                         message: err.message
                     });
                 }
-                res.status(200).send({token: createToken(result)});
+                res.status(200). send({token: createToken(result)});
             })
         });
     }
 }
 
-function createToken(user){
+function createToken(user) {
     var payload = {
-        sub: user._id,
-        iat: moment().unix(),
-        exp: moment().add(14, 'days').unix()
+      sub: user._id,
+      iat: moment().unix(),
+      exp: moment().add(14, 'days').unix() //token expires 14 days from now
     };
-    return jwt.encode(payload,'secret');
+    return jwt.encode(payload, 'secret'); //return as encoded token
 }

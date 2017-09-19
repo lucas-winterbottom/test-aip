@@ -96,7 +96,7 @@ app.delete('/api/message/', function(req, res) {
  Message.findOneAndRemove({_id: id}, function(err){});
 })
 
-var server = app.listen(5000, function() {
+var server = app.listen(3000, function() {
   console.log('listening on port', server.address().port);
 })
 

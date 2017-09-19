@@ -8,7 +8,9 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 
 
 angular.module('myapp2', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
-              'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr'])
+              'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr', 'satellizer'])
+
+  .constant('API_URL', 'http://localhost:5000/')
   .constant('moment', moment)
   .config(config)
   .config(routerConfig)
